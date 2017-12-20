@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+//Moving the word "Credits" using regular expressions in an array.
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Assignment Tabs</title>
+    <link href="../_css/jquery-ui.min.css" rel="stylesheet">
+    <link href="../_css/site.css" rel="stylesheet">
+    <script src="../_js/jquery.min.js"></script>
+    <script src="../_js/jquery-ui.min.js"></script>
+    <style>
+
+        ul li{
+            display: inline-block;
+            font-size: 15.5px;
+        }
+    </style>
+    <script>
+        $(document).ready(function() {
+            $('#tabContainer').tabs({
+                active: false,
+                collapsible: true,
+                beforeActivate : function(evt) {
+                    location.hash = $(evt.currentTarget).attr('href');
+                    var panel =$(location.hash);
+
+
+
+                    var regex= new RegExp('([\c\C]redits: .)');
+                    /*var exam= panel.find('h2');
+                    console.log(exam);*/
+                    var par = $(panel.find('p')[1]);
+                    console.log(par);
+                   var myArray = regex.exec(par.text());
+                   if(myArray!==null) {
+                       par.text(par.text().replace(myArray[0], ""));
+                       
+                       //here is where I decide for my new location ('h2')
+                       $('<span style="color: #33a944;"> ' + myArray[0] + '</span>').appendTo(panel.find('h2'));
+
+                   }
+
+                },
+                show: 'fadeIn',
+                hide: 'fadeOut'
+            });
+            var hash = location.hash;
+            if (hash) {
+                $('#tabContainer').tabs("load", hash)
+            }
+
+        }); // end ready
+    </script>
+</head>
+<body>
+<div class="wrapper">
+    <header>
+        Here are some computer courses!
+    </header>
+
+        <div class="main">
+            <h1>Tabs</h1>
+            <div id="tabContainer">
+                <ul>
+                    <li><a href="#panel1">BCS 405</a></li>
+                    <li><a href="#panel2">BCS 410</a></li>
+                    <li><a href="#panel3">BCS 413</a></li>
+                    <li><a href="#panel4">BCS 415</a></li>
+                    <li><a href="#panel5">BCS 420</a></li>
+                    <li><a href="#panel6">BCS 421</a></li>
+                    <li><a href="#panel7">BCS 422</a></li>
+                    <li><a href="#panel8">BCS 425</a></li>
+                    <li><a href="#panel9">BCS 427</a></li>
+                    <li><a href="#panel10">BCS 430W</a></li>
+                    <li><a href="#panel11">BCS 440</a></li>
+                    <li><a href="#panel12">BCS 450-451</a></li>
+                    <li><a href="#panel13">BCS 460</a></li>
+                </ul>
+                <!-- panel 1 -->
+                <div id="panel1">
+                    <h2>BCS 405 - IS Development Project Management</h2>
+                    <p>This course will cover Project Management tools and techniques for
+                        Systems Development projects. Students will learn Project Management,
+                        Scope Management, Time Management, Cost Management, Quality Management,
+                        Human Resource Management and Communications Management all in the context
+                        of running successful information systems development and implementation projects.
+                        MS project will be used as a tool to managing all of these areas.</p>
+                    <p>Prerequisite(s): BCS 300 with a grade of C or higher.  Credits: 3</p>
+
+                </div>
+                <!-- panel 2 -->
+                <div id="panel2">
+                    <h2>BCS 410 - Computer Architecture</h2>
+                    <p>Computer Architecture is the study of hardware and
+                        software components of business information systems. Thorough understanding
+                        of the workings of the digital computer system is expected. Topics include: hardware
+                        components, the machine cycle, binary arithmetic, systems software, and assembly language.
+                        These topics are evaluated with respect to their impact on the development of business information systems.</p>
+                    <p>Prerequisite(s): Two semesters of a programming language required with a grade of C or higher and BCS
+                        262 with a grade of C or higher. Credits: 3</p>
+
+                </div>
+                <!-- panel 3 -->
+                <div id="panel3">
+                    <h2>BCS 413 - Advanced Enterprise Resource Planning</h2>
+                    <p>This advanced-level Enterprise Resource Planning (ERP) course includes high-level information technology
+                        coverage of Scheduling, Planning, MRP, Logistics, Warehousing, Procurement, Quality, Vendor Management,
+                        Cost Accounting, Forecasting, KPI, Supply Chain, and Customer Resource Management. Also covered are concepts
+                        and software applications pertaining to product design, development, manufacturing (production), marketing, sales,
+                        and  eld service. This course emphasizes pro ciency in the skill sets typically required within industry practices.</p>
+                    <p>Prerequisite(s): BUS 300 or BCS 300 and (BUS 317 or BCS 317) Credits: 3</p>
+
+                </div>
+                <div id="panel4">
+                    <h2>BCS 415 - Operating System Internals and Design</h2>
+                    <p>This course will involve the study of the fundamentals of operating systems design and
+                        implementation. The concepts covered include process management, memory management,
+                        le systems, I/O system management, distributed systems, and security. Students will
+                        examine how these concepts are found in several current open-source operating systems,
+                        including Vista, UNIX and/or Linux..</p>
+                    <p>Prerequisite(s): BCS 215 and (BCS 230 or BCS 285) all with a grade of C or higher Credits: 3</p>
+
+                </div>
+                <div id="panel5">
+                    <h2>BCS 420 - Client/Server Computing</h2>
+                    <p>Included in this course are a wide range of issues, methods, techniques and case examples for
+                        developing and managing client/server and distributed systems. These include client/ server development
+                        using (RAD) methodologies, transaction process monitors, types of aboveware and middleware, middleware standards
+                        (DCE,RPC and CORBA), managing client/server environments, software installation and distribution, electronic mail
+                        architectures in C/S products.</p>
+                    <p>Prerequisite(s): BCS 260 Credits: 3</p>
+
+                </div>
+                <div id="panel6">
+                    <h2>BCS 421 - Android Mobile Application Development</h2>
+                    <p>This course provides an introduction to Android mobile application development.
+                        Techniques for designing the user interface will be discussed. The Android application
+                        lifecycle and issues related to battery life will be covered. Storing application data using a
+                        database will be explored. Students will receive hands-on experience using the Android mobile application
+                        development platform.</p>
+                    <p>Prerequisite(s): BCS 345 with a C or higher. Credits: 3</p>
+
+                </div>
+                <div id="panel7">
+                    <h2>BCS 422 - iOS Mobile Application Development</h2>
+                    <p>This course provides an introduction to iOS mobile application development for Apple devices.
+                        Students will be introduced to the Swift programming language. Emphasis will be placed on good
+                        programming practices, on object oriented techniques, and on using established design patterns for
+                        mobile applications. Students will receive hands-on experience using the Xcode development environment to
+                        build example apps. Basic instruction in Objective-C will provide students with the ability to read and reuse
+                        legacy iOS code.</p>
+                    <p>Prerequisite(s): BCS 345 or BCS 370 with a grade of C or higher. Credits: 3</p>
+
+                </div>
+                <div id="panel8">
+                    <h2>BCS 425 - Business Intelligence and Data Warehousing</h2>
+                    <p>Business Intelligence is the transformation of data into actionable information. This information
+                        is used by businesses to drive high-level decision making. This course is concerned with extracting data
+                        from the information systems that deal with the day-to-day operations and transforming it into data that
+                        can be used for decision making. Students will learn how to design and create a data warehouse, and how to
+                        utilize the process of extracting, transforming, and loading (ETL) data into data warehouses. Students will
+                        design and construct dynamic reports using the data warehouse and multi-dimensional online analytical processing
+                        (OLAP) cubes as the data source.</p>
+                    <p>Prerequisite(s): BCS 260 with a grade of C or higher. Credits: 3</p>
+
+                </div>
+                <div id="panel9">
+                    <h2>BCS 427 - Game Programming</h2>
+                    <p>This course provides an introduction to two-dimensional game programming. Students will learn
+                        how to draw and manage game objects. Techniques for adding sound to a game will be discussed. Creation
+                        of computer controlled game objects will also be covered. Students will receive hands-on experience with a
+                        current game development platform. Students will be expected to create their own two-dimensional game by the
+                        end of the course.</p>
+                    <p>Prerequisite(s): BCS 345 with a grade of C or higher. Credits: 3</p>
+
+                </div>
+                <div id="panel10">
+                    <h2>BCS 430W - Senior Project (Writing Intensive)</h2>
+                    <p>The primary objective of this course is to give Computer Programming and Information
+                        Systems students an opportunity to integrate techniques and concepts acquired in their other courses.
+                        Elements will be drawn primarily from BCS301 (Systems Analysis and Design) and BCS260 (Database), in addition
+                        to other courses in the student’s selected track of study. The course is experiential in nature i.e. the student
+                        will be required to produce results for use by real individuals and will be evaluated both on process and product.
+                        In addition to prerequisites, a second level programming course with a grade of C or better, and Senior level standing
+                        is required. This is a writing-intensive course. Note: Students cannot get credit for BSC 430 and 430W; BCS 430W can be
+                        used to ful ll the writing intensive requirement.  Note: Offered at the discretion of the Computer Programming and Info
+                        Systems Department.
+                    </p>
+                    <p>Prerequisite(s): EGL 101, BCS 260, BCS 301 and (BCS 230 or BCS 285) all with a grade of C or higher Credits: 3</p>
+
+                </div>
+                <div id="panel11">
+                    <h2>BCS 440 - CPIS Internship</h2>
+                    <p>In this course, the student works under the tutelage of a professional who serves as
+                        site supervisor in an organization that provides information services. The work done by the
+                        student is guided by learning objectives agreed to by the site supervisor, the faculty member and
+                        the student. Students are required to submit a written proposal, progress reports, and a  nal report on
+                        their experience to the client and to the department. The course offers an ideal opportunity to test theory
+                        in practice and to gain experience in a realistic information provision situation. The experience is expected
+                        to be mutually bene cial for the organization and student.</p>
+                    <p>Prerequisite(s): Junior Status and GPA >=3.0. Credits: 3</p>
+
+                </div>
+                <div id="panel12">
+                    <h2>BCS 450-451 - Special Topics in Computer Programming and Information Systems</h2>
+                    <p>Courses that range from 450-451 will cover topics not covered in the regular curriculum. Topics may vary from
+                        term to term and re ect the interests of students, faculty and industry. Topics may include wireless communications,
+                        rapid application development and other emerging technologies.</p>
+                    <p>Prerequisite(s): Permission of Department Chair Credits: 3</p>
+
+                </div>
+                <div id="panel13">
+                    <h2>BCS 460 - Independent Study</h2>
+                    <p>This is an independent study course designed to offer the student experience in research of
+                        a specialized area of interest. The student will have an opportunity to work individually or with a group in
+                        designing, developing and presenting a research project. The topic must be approved by a faculty member. Students
+                        will be required to submit full documentation and present their final results.</p>
+                    <p>Prerequisite(s): Permission of Department Chair.  Credits: 3</p>
+
+                </div>
+            </div>
+        </div>
+</div>
+<footer>
+    <p>JavaScript &amp; jQuery: The Missing Manual, 3rd Edition, by <a href="http://sawmac.com/">David McFarland</a>. Published by <a href="http://oreilly.com/">O'Reilly Media, Inc</a>.</p>
+</footer>
+</div>
+</body>
+</html>
