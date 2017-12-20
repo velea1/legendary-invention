@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-//Here the words Credits is moved around using regular expression in an array.
+//Here the word "Credits" is moved around using regular expression in an array.
 <html>
 <head>
     <meta charset="UTF-8">
