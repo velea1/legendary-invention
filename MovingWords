@@ -34,7 +34,8 @@
                    var myArray = regex.exec(par.text());
                    if(myArray!==null) {
                        par.text(par.text().replace(myArray[0], ""));
-
+                        
+                        //New location is ('h2')
                        $('<span style="color: #33a944;"> ' + myArray[0] + '</span>').appendTo(panel.find('h2'));
 
                    }
