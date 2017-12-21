@@ -1,0 +1,136 @@
+import java.util.Scanner;
+
+
+public class Task1 {
+
+//The program determines the best phone bill plan depending on the minutes
+
+
+	public static void main(String[] args) {
+		String fname;
+		char x;
+		double min=0,charge=0;
+		Scanner keyboard = new Scanner(System.in);
+		
+		System.out.println("                                                Mobile Phone Service Plan");
+		System.out.println("----------------------------------------------------------------------------------------------------------------------");
+		System.out.println("Plan A: $39.99 per month. 450 free minutes."
+				+ " Additional usage costs $0.45 per minute. ");
+		System.out.println("Plan B: $59.99 per month. 900 free minutes. "
+				+ "Additional usage costs $0.40 per minute. ");
+		System.out.println("Plan C: $69.99 per month. Unlimited minutes. ");
+		
+		System.out.print("Please enter your full name: ");
+		fname= keyboard.nextLine();
+		//System.out.println(fname);
+		System.out.println("Which mobile service plan is used(A, B, or C)? ");
+		x = keyboard.next().charAt(0);
+		while(x!='a'&& x!='b'&&x!='c'&&x!='A'&&x!='B'&&x!='C') {
+			System.out.println("Wrong input, please re-enter your plan: ");
+			x = keyboard.next().charAt(0);
+			}
+		if(x=='a'&& x=='b'&&x=='c'&&x=='A'&&x=='B'&&x=='C'){
+			System.out.println("You entered Plan: "+ x);
+		}
+		
+		System.out.print("How many minutes were used last month? ");
+		min= keyboard.nextDouble();
+		
+		while(min<0) {
+			System.out.print("The amount of minutes must be non-negative. Please enter a valid "
+					+ "value:  ");
+			min= keyboard.nextDouble();
+
+		}
+		if (min>0) {
+			System.out.println("You've entered  " + min);
+		}
+		
+		
+		System.out.println();
+		System.out.println("Monthly statement for "+ fname);
+		System.out.println("Plan "+x+ " minutes used: "+ min);
+		double nb,nb1;
+		if(x=='a'|| x=='A') {
+			if(min<=450) {
+				System.out.println("You chose the best plan!");
+			}
+			if(min>450) {
+				min-=450;
+				charge=min;
+				charge*=.45;
+				charge+=39.99;
+				nb= charge-59.99;
+				nb1=charge-69.99;
+				System.out.print("The chargers are $ ");
+				System.out.printf("%.2f",charge);
+				System.out.println();
+				
+				if(nb>=0) {
+				System.out.print("By switching to plan b you would save $ ");
+				System.out.printf("%.2f",nb);
+				System.out.println();
+				}
+				if(nb1>=0) {
+					System.out.print("By switching to plan c you would save $ ");
+					System.out.printf("%.2f",nb1);
+			   }
+			
+			}	
+		}
+		
+		if(x=='b'|| x=='B') {
+			if(min<450) {
+				charge=59.99;
+				nb= charge-39.99;
+				
+				System.out.print("By switching to plan a you would save $ ");
+				System.out.printf("%.2f",nb);
+				System.out.println();
+				}
+			if(min<=900&&min>450) {
+				System.out.println("You chose the best plan!");
+			}
+			if(min>900) {
+				min-=900;
+				charge=min;
+				charge*=.40;
+				charge+=59.99;
+				nb= charge-69.99;
+				
+				System.out.print("The chargers are $ ");
+				System.out.printf("%.2f",charge);
+				System.out.println();
+				
+				if(nb>=0) {
+				System.out.print("By switching to plan c you would save $ ");
+				System.out.printf("%.2f",nb);
+				}
+			}
+			
+		}
+		if(x=='c'|| x=='C') {
+			if(min>=900) {
+				System.out.println("You chose the best plan!");
+			}
+			if(min<450||min<900) {
+			
+				charge=69.99;
+				nb= charge-39.99;
+				nb1=charge-59.99;
+				System.out.print("The chargers are $ ");
+				System.out.printf("%.2f",charge);
+				System.out.println();
+				if(min<450) {
+					System.out.print("By switching to plan a you would save $ ");
+					System.out.printf("%.2f",nb);
+					System.out.println();
+					}
+				if(min<900) {
+				System.out.print("By switching to plan b you would save $ ");
+				System.out.printf("%.2f",nb1);
+				}
+			}
+		}
+		
+}
